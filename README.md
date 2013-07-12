@@ -5,7 +5,7 @@ Getting Started: Accessing Data with Mongo
 What you'll build
 -----------------
 
-This guide walks you through the process of building an application with Mongo's data store using the powerful Spring Data Mongo library to store and retrieve POJOs.
+This guide walks you through the process of building an application Spring Data Mongo to store and retrieve data in mongo's document-based database.
 
 What you'll need
 ----------------
@@ -193,17 +193,23 @@ public class Customer {
 
 ```
 
-Here you have a `Customer` class with two attributes, the `firstName` and the `lastName`. There is also an `id`, but it is mostly for internal use by Mongo. You also have a single constructor to populate the entities when creating a new instance.
+Here you have a `Customer` class with three attributes, the `id, the `firstName` and the `lastName`. The `id` is mostly for internal use by Mongo. You also have a single constructor to populate the entities when creating a new instance.
 
 > Note: In this guide, the typical getters and setters have been left out for brevity.
 
+`id` fits the standard name for a Mongo id so it doesn't require any special annotation to tag it for Spring Data Mongo.
+
+The other two properties, `firstName` and `lastName` are left unannotated. It is assumed that they'll be mapped to columns that share the same name as the properties themselves.
+
 The convenient `toString()` method will print out the details about a customer.
+
+> **Note:** Mongo stores data in collections. Spring Data Mongo will map the class `Customer` into a collection called **customer**. If you want to change the name of the collection, you can use Spring Data Mongo's [`@Document`](http://static.springsource.org/spring-data/data-mongodb/docs/current/api/org/springframework/data/mongodb/core/mapping/Document.html) annotation on the class.
 
 Create simple queries
 ----------------------------
 Spring Data Mongo focuses on storing data in Mongo. It also inherits powerful functionality from the Spring Data Commons project, such as the ability to derive queries. Essentially, you don't have to learn the query language of Mongo; you can simply write a handful of methods and the queries are written for you.
 
-To see how this works, create an interface that queries `Customer` nodes.
+To see how this works, create a repository interface that queries `Customer` documents.
 
 `src/main/java/hello/CustomerRepository.java`
 ```java
@@ -221,12 +227,14 @@ public interface CustomerRepository extends MongoRepository<Customer, String> {
 }
 ```
     
-`CustomerRepository` extends the `MongoRepository` interface and plugs in the type of values and id it works with: `Customer` and `String`. Out-of-the-box, this interface comes with many operations, including standard CRUD (change-replace-update-delete).
+`CustomerRepository` extends the `MongoRepository` interface and plugs in the type of values and id it works with: `Customer` and `String`. Out-of-the-box, this interface comes with many operations, including standard CRUD operations (change-replace-update-delete).
 
-You can define other queries as needed by simply declaring their method signature. In this case, you add `findByFirstName`, which essentially seeks nodes of type `Customer` and find the one that matches on `firstName`.
+You can define other queries as needed by simply declaring their method signature. In this case, you add `findByFirstName`, which essentially seeks documents of type `Customer` and finds the one that matches on `firstName`.
 
 You also have:
 - `findByLastName` to find a list of people by last name
+
+In a typical Java application, you would write a class that implements `CustomerRepository` and craft the queries yourself. What makes Spring Data Mongo so powerful is the fact that you don't have to create this implementation. Spring Data Mongo creates it on the fly when you run the application.
 
 Let's wire this up and see what it looks like!
 
@@ -303,21 +311,13 @@ public class Application {
 }
 ```
 
-In the configuration, you need to add the `@EnableMongoRepositories` annotation.
+In the configuration, you need to add the `@EnableMongoRepositories` annotation. This tells Spring Data Mongo that it should seek out any interface that extends `org.springframework.data.repository.Repository` and to automatically generate an implementation. By extending `MongoRepository`, your `CustomerRepository` interface transitively extends `Repository`. Therefore, Spring Data Mongo will find it and create an implementation for you.
 
-You also need to define a `Mongo` connection. Since you are running the Mongo server locally, this one points at localhost.
+* The `Mongo` connection links the application to your Mongo database server
+* The `MongoTemplate` is needed by Spring Data Mongo to execute the queries behind your `find*` methods. You can use the template yourself for more complex queries, but this guide won't go into that.
+* Finally, you autowire an instance of `CustomerRepository`. Spring Data Mongo dynamically creates a proxy and injects it there.
 
-Spring Data Mongo also needs a `MongoTemplate`. You can use the template for more complex operations, but this guide is keeping things simple and only using the generated queries.
-
-You autowire an instance of `CustomerRepository` that you just defined. Spring Data Mongo will dynamically create a concrete class that implements that interface and will plug in the needed query code to meet the interface's obligations.
-
-Store and fetch data
--------------------------
-The `public static void main` method includes code to create an application context and then define people.
-
-In this case, you are creating tow customers, **Alice Smith** and **Bob Smith**. Then you save them in Mongo.
-
-Now you run several queries. The first looks up everyone by name. Then you execute a handful of queries to find adults, babies, and teens, all using the age attribute. With the logging turned up, you can see the queries Spring Data GemFire writes on your behalf.
+Finally, `Application` includes a `main()` method that puts the `CustomerRepository` through a few tests. First, it fetches the `CustomerRepository` from the Spring application context. Then it saves a handful of `Customer` objects, demonstrating the `save()` method and setting up some data to work with. Next, it calls `findAll()` to fetch all `Customer` objects from the database. Then it calls `findByFirstName()` to fetch a single `Customer` by her first name. Finally, it calls `findByLastName()` to find all customers whose last name is "Smith".
 
 Build the application
 ------------------------
@@ -386,4 +386,4 @@ Customer[id=51df1b0a3004cb49c50210f9, firstName='Bob', lastName='Smith']
 
 Summary
 -------
-Congratulations! You set up a Mongo server, stored simple entities, and developed quick queries.
+Congratulations! You set up a Mongo server, written a simple application that uses Spring Data Mongo to save some objects to a database, and to fetch them; all without writing a concrete repository implementation.
