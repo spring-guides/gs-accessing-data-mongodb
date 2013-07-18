@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework</groupId>
-    <artifactId>gs-acessing-data-mongo-complete</artifactId>
+    <artifactId>gs-acessing-data-mongo</artifactId>
     <version>0.1.0</version>
 
     <parent>
