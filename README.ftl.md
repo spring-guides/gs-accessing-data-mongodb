@@ -1,8 +1,5 @@
 <#assign project_id="gs-accessing-data-mongo">
 
-Getting Started: Accessing Data with Mongo
-==========================================
-
 What you'll build
 -----------------
 

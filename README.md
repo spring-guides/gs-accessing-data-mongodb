@@ -1,7 +1,4 @@
 
-Getting Started: Accessing Data with Mongo
-==========================================
-
 What you'll build
 -----------------
 
