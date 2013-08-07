@@ -1,8 +1,9 @@
+This guide walks you through the process of building an application Spring Data Mongo to store and retrieve data in mongo's document-based database.
 
 What you'll build
 -----------------
 
-This guide walks you through the process of building an application Spring Data Mongo to store and retrieve data in mongo's document-based database.
+You will store `Person` POJOs in a Mongo database using Spring Data Mongo.
 
 What you'll need
 ----------------
