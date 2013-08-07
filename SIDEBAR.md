@@ -22,8 +22,10 @@ There's more to data persistence than what is presented here. You may want to co
 
 ### Understanding
 
+* [NoSQL][u-nosql]
 * [REST][u-rest]
 * [JSON][u-json]
 
+[u-nosql]: /understanding/nosql
 [u-rest]: /understanding/rest
 [u-json]: /understanding/json
