@@ -26,6 +26,6 @@ There's more to data persistence than what is presented here. You may want to co
 * [REST][u-rest]
 * [JSON][u-json]
 
-<@u_nosql/>
-<@u_rest/>
-<@u_json/>
+[u-nosql]: /understanding/NoSQL
+[u-rest]: /understanding/REST
+[u-json]: /understanding/JSON
