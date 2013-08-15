@@ -2,7 +2,7 @@
 
 There's more to data persistence than what is presented here. You may want to continue your exploration of data access using Spring with the following
 
-### Getting Started Guides
+### Getting Started guides
 
 * [Accessing Relational Data][gs-relational-data-access]
 * [Accessing Data with GemFire][gs-accessing-data-gemfire]
@@ -20,7 +20,7 @@ There's more to data persistence than what is presented here. You may want to co
 
 [tut-rest]: /guides/tutorials/rest
 
-### Understanding
+### Concepts and technologies
 
 * [NoSQL][u-nosql]
 * [REST][u-rest]
