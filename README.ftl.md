@@ -23,9 +23,9 @@ Set up the project
 
 <@create_directory_structure_hello/>
 
-### Create a Maven POM
+### Create a Gradle build file
 
-    <@snippet path="pom.xml" prefix="initial"/>
+    <@snippet path="build.gradle" prefix="initial"/>
 
 
 <a name="initial"></a>
@@ -107,9 +107,9 @@ In the configuration, you need to add the `@EnableMongoRepositories` annotation.
 
 Finally, `Application` includes a `main()` method that puts the `CustomerRepository` through a few tests. First, it fetches the `CustomerRepository` from the Spring application context. Then it saves a handful of `Customer` objects, demonstrating the `save()` method and setting up some data to work with. Next, it calls `findAll()` to fetch all `Customer` objects from the database. Then it calls `findByFirstName()` to fetch a single `Customer` by her first name. Finally, it calls `findByLastName()` to find all customers whose last name is "Smith".
 
-## <@build_an_executable_jar/>
+## <@build_an_executable_jar_with_gradle/>
     
-<@run_the_application_with_maven/>
+<@run_the_application_with_gradle/>
     
 You should see something like this (with other stuff like queries as well):
 ```
