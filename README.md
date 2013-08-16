@@ -1,8 +1,9 @@
+This guide walks you through the process of building an application Spring Data Mongo to store and retrieve data in mongo's document-based database.
 
 What you'll build
 -----------------
 
-This guide walks you through the process of building an application Spring Data Mongo to store and retrieve data in mongo's document-based database.
+You will store `Person` POJOs in a Mongo database using Spring Data Mongo.
 
 What you'll need
 ----------------
@@ -10,9 +11,10 @@ What you'll need
  - About 15 minutes
  - A favorite text editor or IDE
  - [JDK 6][jdk] or later
- - [Maven 3.0][mvn] or later
+ - [Gradle 1.7+][gradle] or [Maven 3.0+][mvn]
 
 [jdk]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
+[gradle]: http://www.gradle.org/
 [mvn]: http://maven.apache.org/download.cgi
 
 How to complete this guide
@@ -24,20 +26,21 @@ To **start from scratch**, move on to [Set up the project](#scratch).
 
 To **skip the basics**, do the following:
 
- - [Download][zip] and unzip the source repository for this guide, or clone it using [git](/understanding/git):
+ - [Download][zip] and unzip the source repository for this guide, or clone it using [Git][u-git]:
 `git clone https://github.com/springframework-meta/gs-accessing-data-mongo.git`
  - cd into `gs-accessing-data-mongo/initial`.
  - Jump ahead to [Install and launch Mongo](#initial).
 
 **When you're finished**, you can check your results against the code in `gs-accessing-data-mongo/complete`.
 [zip]: https://github.com/springframework-meta/gs-accessing-data-mongo/archive/master.zip
+[u-git]: /understanding/Git
 
 
 <a name="scratch"></a>
 Set up the project
 ------------------
 
-First you set up a basic build script. You can use any build system you like when building apps with Spring, but the code you need to work with [Maven](https://maven.apache.org) and [Gradle](http://gradle.org) is included here. If you're not familiar with either, refer to [Building Java Projects with Maven](/guides/gs/maven/content) or [Building Java Projects with Gradle](/guides/gs/gradle/content).
+First you set up a basic build script. You can use any build system you like when building apps with Spring, but the code you need to work with [Gradle](http://gradle.org) and [Maven](https://maven.apache.org) is included here. If you're not familiar with either, refer to [Building Java Projects with Gradle](/guides/gs/gradle/) or [Building Java Projects with Maven](/guides/gs/maven).
 
 ### Create the directory structure
 
@@ -48,67 +51,40 @@ In a project directory of your choosing, create the following subdirectory struc
             └── java
                 └── hello
 
-### Create a Maven POM
+### Create a Gradle build file
 
-`pom.xml`
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+`build.gradle`
+```gradle
+buildscript {
+    repositories {
+        maven { url "http://repo.springsource.org/libs-snapshot" }
+        mavenLocal()
+    }
+}
 
-    <groupId>org.springframework</groupId>
-    <artifactId>gs-acessing-data-mongo</artifactId>
-    <version>0.1.0</version>
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>0.5.0.BUILD-SNAPSHOT</version>
-    </parent>
+jar {
+    baseName = 'gs-acessing-data-mongo'
+    version =  '0.1.0'
+}
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-    	<dependency>
-	    	<groupId>org.springframework.data</groupId>
-	    	<artifactId>spring-data-mongodb</artifactId>
-	    	<version>1.2.1.RELEASE</version>
-    	</dependency>
-    </dependencies>
+repositories {
+    mavenCentral()
+    maven { url "http://repo.springsource.org/libs-snapshot" }
+}
 
-    <!-- TODO: remove once bootstrap goes GA -->
-    <repositories>
-        <repository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>http://repo.springsource.org/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>neo4j</id>
-            <name>Neo4j</name>
-            <url>http://m2.neo4j.org/</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>spring-snapshots</id>
-            <name>Spring Snapshots</name>
-            <url>http://repo.springsource.org/snapshot</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-</project>
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web:0.5.0.BUILD-SNAPSHOT")
+    compile("org.springframework.data:spring-data-mongodb:1.2.1.RELEASE")
+    testCompile("junit:junit:4.11")
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.7'
+}
 ```
 
 
@@ -153,9 +129,9 @@ import org.springframework.data.annotation.Id;
 
 public class Customer {
 
-	@Id
+    @Id
     private String id;
-	
+
     private String firstName;
     private String lastName;
 
@@ -204,10 +180,10 @@ import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface CustomerRepository extends MongoRepository<Customer, String> {
-	
-	public Customer findByFirstName(String firstName);
-	public List<Customer> findByLastName(String lastName);
-	
+
+    public Customer findByFirstName(String firstName);
+    public List<Customer> findByLastName(String lastName);
+
 }
 ```
     
@@ -246,30 +222,30 @@ import com.mongodb.Mongo;
 @Configuration
 @EnableMongoRepositories
 public class Application {
-	
-	@Autowired
-	CustomerRepository customerRepository;
-	
-	@Bean
-	Mongo mongo() throws UnknownHostException {
-		return new Mongo("localhost");
-	}
-	
-	@Bean
-	MongoTemplate mongoTemplate(Mongo mongo) {
-		return new MongoTemplate(mongo, "gs-accessing-data-mongo");
-	}
+
+    @Autowired
+    CustomerRepository customerRepository;
+
+    @Bean
+    Mongo mongo() throws UnknownHostException {
+        return new Mongo("localhost");
+    }
+
+    @Bean
+    MongoTemplate mongoTemplate(Mongo mongo) {
+        return new MongoTemplate(mongo, "gs-accessing-data-mongo");
+    }
 
     public static void main(String[] args) {
         AbstractApplicationContext context = new AnnotationConfigApplicationContext(Application.class);
         CustomerRepository repository = context.getBean(CustomerRepository.class);
-        
+
         repository.deleteAll();
-        
+
         // save a couple of customers
         repository.save(new Customer("Alice", "Smith"));
         repository.save(new Customer("Bob", "Smith"));
-        
+
         // fetch all customers
         System.out.println("Customers found with findAll():");
         System.out.println("-------------------------------");
@@ -277,7 +253,7 @@ public class Application {
             System.out.println(customer);
         }
         System.out.println();
-        
+
         // fetch an individual customer
         System.out.println("Customer found with findByFirstName('Alice'):");
         System.out.println("--------------------------------");
@@ -286,12 +262,12 @@ public class Application {
         System.out.println("Customers found with findByLastName('Smith'):");
         System.out.println("--------------------------------");
         for (Customer customer : repository.findByLastName("Smith")) {
-        	System.out.println(customer);
+            System.out.println(customer);
         }
 
         context.close();
     }
-    
+
 }
 ```
 
@@ -305,44 +281,51 @@ Finally, `Application` includes a `main()` method that puts the `CustomerReposit
 
 Now that your `Application` class is ready, you simply instruct the build system to create a single, executable jar containing everything. This makes it easy to ship, version, and deploy the service as an application throughout the development lifecycle, across different environments, and so forth.
 
-Add the following configuration to your existing Maven POM:
+Update your Gradle `build.gradle` file's `buildscript` section, so that it looks like this:
 
-`pom.xml`
-```xml
-    <properties>
-        <start-class>hello.Application</start-class>
-    </properties>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
+```groovy
+buildscript {
+    repositories {
+        maven { url "http://repo.springsource.org/libs-snapshot" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:0.5.0.BUILD-SNAPSHOT")
+    }
+}
 ```
 
-The `start-class` property tells Maven to create a `META-INF/MANIFEST.MF` file with a `Main-Class: hello.Application` entry. This entry enables you to run it with `mvn spring-boot:run` (or simply run the jar itself with `java -jar`).
+Further down inside `build.gradle`, add the following to the list of applied plugins:
 
-The [Spring Boot maven plugin][spring-boot-maven-plugin] collects all the jars on the classpath and builds a single "über-jar", which makes it more convenient to execute and transport your service.
+```groovy
+apply plugin: 'spring-boot'
+```
+
+The [Spring Boot gradle plugin][spring-boot-gradle-plugin] collects all the jars on the classpath and builds a single "über-jar", which makes it more convenient to execute and transport your service.
+It also searches for the `public static void main()` method to flag as a runnable class.
 
 Now run the following command to produce a single executable JAR file containing all necessary dependency classes and resources:
 
 ```sh
-$ mvn package
+$ ./gradlew build
 ```
 
-[spring-boot-maven-plugin]: https://github.com/SpringSource/spring-boot/tree/master/spring-boot-maven-plugin
+Now you can run the JAR by typing:
 
-> **Note:** The procedure above will create a runnable JAR. You can also opt to [build a classic WAR file](/guides/gs/convert-jar-to-war/content) instead.
+```sh
+$ java -jar build/libs/gs-accessing-data-mongo-0.1.0.jar
+```
+
+[spring-boot-gradle-plugin]: https://github.com/SpringSource/spring-boot/tree/master/spring-boot-tools/spring-boot-gradle-plugin
+
+> **Note:** The procedure above will create a runnable JAR. You can also opt to [build a classic WAR file](/guides/gs/convert-jar-to-war/) instead.
     
 Run the service
 -------------------
-Run your service using the spring-boot plugin at the command line:
+Run your service at the command line:
 
 ```sh
-$ mvn spring-boot:run
+$ ./gradlew clean build && java -jar build/libs/gs-accessing-data-mongo-0.1.0.jar
 ```
 
     
