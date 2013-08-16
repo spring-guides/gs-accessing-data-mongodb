@@ -1,4 +1,4 @@
-### Related resources
+## Related resources
 
 There's more to data persistence than what is presented here. You can continue to explore data access and Spring with the following resources.
 

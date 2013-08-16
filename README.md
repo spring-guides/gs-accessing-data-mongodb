@@ -1,4 +1,4 @@
-This guide walks you through the process of building an application Spring Data Mongo to store and retrieve data in mongo's document-based database.
+This guide walks you through the process of using Spring Data Mongo to build an application that stores and retrieves data in Mongo's document-based database.
 
 What you'll build
 -----------------
@@ -198,7 +198,7 @@ In a typical Java application, you would write a class that implements `Customer
 
 Let's wire this up and see what it looks like!
 
-Create an application class
+Create an Application class
 ---------------------------
 Here you create an Application class with all the components.
 
@@ -279,6 +279,8 @@ In the configuration, you need to add the `@EnableMongoRepositories` annotation.
 
 Finally, `Application` includes a `main()` method that puts the `CustomerRepository` through a few tests. First, it fetches the `CustomerRepository` from the Spring application context. Then it saves a handful of `Customer` objects, demonstrating the `save()` method and setting up some data to work with. Next, it calls `findAll()` to fetch all `Customer` objects from the database. Then it calls `findByFirstName()` to fetch a single `Customer` by her first name. Finally, it calls `findByLastName()` to find all customers whose last name is "Smith".
 
+Build an executable JAR
+-----------------------
 Now that your `Application` class is ready, you simply instruct the build system to create a single, executable jar containing everything. This makes it easy to ship, version, and deploy the service as an application throughout the development lifecycle, across different environments, and so forth.
 
 Update your Gradle `build.gradle` file's `buildscript` section, so that it looks like this:
