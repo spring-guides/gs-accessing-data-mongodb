@@ -171,7 +171,7 @@ The other two properties, `firstName` and `lastName`, are left unannotated. It i
 
 The convenient `toString()` method will print out the details about a customer.
 
-> **Note:** MongoDB stores data in collections. Spring Data Mongo will map the class `Customer` into a collection called _customer_. If you want to change the name of the collection, you can use Spring Data Mongo's [`@Document`](http://static.springsource.org/spring-data/data-mongodb/docs/current/api/org/springframework/data/mongodb/core/mapping/Document.html) annotation on the class.
+> **Note:** MongoDB stores data in collections. Spring Data Mongo will map the class `Customer` into a collection called _customer_. If you want to change the name of the collection, you can use Spring Data Mongo's [`@Document`](http://docs.spring.io/spring-data/data-mongodb/docs/current/api/org/springframework/data/mongodb/core/mapping/Document.html) annotation on the class.
 
 
 Create simple queries
