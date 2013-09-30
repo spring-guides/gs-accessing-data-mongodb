@@ -1,4 +1,4 @@
-This guide walks you through the process of using [Spring Data Mongo](http://www.springsource.org/spring-data/mongodb) to build an application that stores data in and retrieves it from [MongoDB](http://www.mongodb.org/), a document-based database.
+This guide walks you through the process of using [Spring Data MongoDB](http://projects.spring.io/spring-data-mongodb/) to build an application that stores data in and retrieves it from [MongoDB](http://www.mongodb.org/), a document-based database.
 
 
 What you'll build
