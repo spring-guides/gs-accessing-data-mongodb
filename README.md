@@ -82,8 +82,8 @@ repositories {
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-data-jpa:0.5.0.M5")
-    compile("org.springframework.data:spring-data-mongodb:1.2.1.RELEASE")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa:0.5.0.M6")
+    compile("org.springframework.data:spring-data-mongodb:1.3.2.RELEASE")
     testCompile("junit:junit:4.11")
 }
 
@@ -291,7 +291,7 @@ buildscript {
         mavenLocal()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:0.5.0.M4")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:0.5.0.M6")
     }
 }
 ```
