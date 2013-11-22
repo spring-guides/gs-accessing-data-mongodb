@@ -11,22 +11,27 @@ You will store `Person` POJOs in a MongoDB database using Spring Data Mongo.
 
 == What you'll need
 
-include::macros/prereq_editor_jdk_buildtools.asc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
 
 :jump_ahead: Install and launch Mongo
-include::macros/how_to_complete_this_guide.asc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
 
 
 [[scratch]]
 == Set up the project
 
-include::macros/build_system_intro.asc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/build_system_intro.adoc[]
 
-include::macros/create_directory_structure_hello.asc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/create_directory_structure_hello.adoc[]
 
 
-include::macros/create_both_builds.asc[]
-
+include::https://raw.github.com/spring-guides/getting-started-macros/master/create_both_builds.adoc[]
+`build.gradle`
+// AsciiDoc source formatting doesn't support groovy, so using java instead
+[source,java]
+----
+include::initial/build.gradle[]
+----
 
 [[initial]]
 == Install and launch Mongo
@@ -118,10 +123,10 @@ In the configuration, you need to add the `@EnableMongoRepositories` annotation.
 
 `Application` includes a `main()` method that puts the `CustomerRepository` through a few tests. First, it fetches the `CustomerRepository` from the Spring application context. Then it saves a handful of `Customer` objects, demonstrating the `save()` method and setting up some data to work with. Next, it calls `findAll()` to fetch all `Customer` objects from the database. Then it calls `findByFirstName()` to fetch a single `Customer` by her first name. Finally, it calls `findByLastName()` to find all customers whose last name is "Smith".
 
-include::macros/build_an_executable_jar_mainhead.asc[]
-include::macros/build_an_executable_jar_with_both.asc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/build_an_executable_jar_mainhead.adoc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
     
-include::macros/run_the_application_with_both.asc[]
+include::https://raw.github.com/spring-guides/getting-started-macros/master/run_the_application_with_both.adoc[]
     
 You should see something like this (with other stuff like queries as well):
 ....
