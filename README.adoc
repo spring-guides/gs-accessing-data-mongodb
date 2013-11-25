@@ -13,7 +13,6 @@ You will store `Person` POJOs in a MongoDB database using Spring Data Mongo.
 
 include::https://raw.github.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
 
-:jump_ahead: Install and launch Mongo
 include::https://raw.github.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
 
 
