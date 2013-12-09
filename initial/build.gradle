@@ -10,7 +10,7 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 
 jar {
-    baseName = 'gs-acessing-data-mongo'
+    baseName = 'gs-accessing-data-mongo'
     version =  '0.1.0'
 }
 
