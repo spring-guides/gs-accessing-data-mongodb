@@ -1,3 +1,7 @@
+---
+tags: [data, mongodb]
+projects: [spring-data-mongodb]
+---
 :toc:
 :icons: font
 :source-highlighter: prettify
