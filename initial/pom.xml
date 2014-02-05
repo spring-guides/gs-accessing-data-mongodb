@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.springframework</groupId>
-    <artifactId>gs-accessing-data-mongo</artifactId>
+    <artifactId>gs-accessing-data-mongodb</artifactId>
     <version>0.1.0</version>
 
     <parent>
