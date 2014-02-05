@@ -5,7 +5,7 @@ projects: [spring-data-mongodb]
 :toc:
 :icons: font
 :source-highlighter: prettify
-:project_id: gs-accessing-data-mongo
+:project_id: gs-accessing-data-mongodb
 This guide walks you through the process of using http://projects.spring.io/spring-data-mongodb/[Spring Data MongoDB] to build an application that stores data in and retrieves it from http://www.mongodb.org/[MongoDB], a document-based database.
 
 
