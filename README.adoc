@@ -37,7 +37,7 @@ include::initial/build.gradle[]
 ----
 
 [[initial]]
-== Install and launch MongoDBo
+== Install and launch MongoDB
 With your project set up, you can install and launch the MongoDB database.
 
 
