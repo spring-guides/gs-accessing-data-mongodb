@@ -24,8 +24,7 @@ repositories {
 }
 
 dependencies {
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-    compile("org.springframework.data:spring-data-mongodb")
+    compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     testCompile("junit:junit")
 }
 
