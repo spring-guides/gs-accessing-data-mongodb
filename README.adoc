@@ -98,7 +98,7 @@ To see how this works, create a repository interface that queries `Customer` doc
 include::complete/src/main/java/hello/CustomerRepository.java[]
 ----
     
-`CustomerRepository` extends the `MongoRepository` interface and plugs in the type of values and id it works with: `Customer` and `String`. Out-of-the-box, this interface comes with many operations, including standard CRUD operations (change-replace-update-delete).
+`CustomerRepository` extends the `MongoRepository` interface and plugs in the type of values and id it works with: `Customer` and `String`. Out-of-the-box, this interface comes with many operations, including standard CRUD operations (create-read-update-delete).
 
 You can define other queries as needed by simply declaring their method signature. In this case, you add `findByFirstName`, which essentially seeks documents of type `Customer` and finds the one that matches on `firstName`.
 
