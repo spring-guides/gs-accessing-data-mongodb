@@ -67,6 +67,12 @@ public class Application implements CommandLineRunner {
         for (Customer customer : repository.findByLastName("Smith")) {
             System.out.println(customer);
         }
+        
+        System.out.println("\nCustomers who was not modified since creation");
+        System.out.println("--------------------------------");
+        for (Customer customer : repository.findUnModifiedCustomers()) {
+            System.out.println(customer);
+        }
 
         repository.deleteAll();
         System.out.println("\nDeleted All the Customers");
