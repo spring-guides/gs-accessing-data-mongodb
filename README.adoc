@@ -125,7 +125,6 @@ Then it calls `findByFirstName()` to fetch a single `Customer` by her first name
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_mainhead.adoc[]
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
     
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/run_the_application_with_both.adoc[]
     
 As our `Application` implements `CommandLineRunner`, the `run` method is invoked automatically when boot
 starts. You should see something like this (with other stuff like queries as well):
