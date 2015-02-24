@@ -107,15 +107,23 @@ Here you create an Application class with all the components.
 include::complete/src/main/java/hello/Application.java[]
 ----
 
-In the configuration, you only need to add the usual `@EnableAutoConfiguration` as our repository is located
-in the same package;  Spring Boot will handle those repositories automatically as long as they are included
-in the same package (or a sub-package) of your @EnableAutoConfiguration class. For more control over the
+`@SpringBootApplication` is a convenience annotation that adds all of the following:
+    
+- `@Configuration` tags the class as a source of bean definitions for the application context.
+- `@EnableAutoConfiguration` tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings.
+- Normally you would add `@EnableWebMvc` for a Spring MVC app, but Spring Boot adds it automatically when it sees **spring-webmvc** on the classpath. This flags the application as a web application and activates key behaviors such as setting up a `DispatcherServlet`.
+- `@ComponentScan` tells Spring to look for other components, configurations, and services in the the `hello` package, allowing it to find the `HelloController`.
+
+The `main()` method uses Spring Boot's `SpringApplication.run()` method to launch an application. Did you notice that there wasn't a single line of XML? No **web.xml** file either. This web application is 100% pure Java and you didn't have to deal with configuring any plumbing or infrastructure.
+
+Spring Boot will handle those repositories automatically as long as they are included
+in the same package (or a sub-package) of your `@SpringBootApplication` class. For more control over the
 registration process, you can use the `@EnableMongoRepositories` annotation.
 
 Spring Data MongoDB uses the `MongoTemplate` to execute the queries behind your `find*` methods. You can
 use the template yourself for more complex queries, but this guide doesn't cover that.
 
-`Application` includes a `main()` method that autowire an instance of `CustomerRepository`: Spring Data
+`Application` includes a `main()` method that autowires an instance of `CustomerRepository`: Spring Data
 MongoDB dynamically creates a proxy and injects it there. We use the `CustomerRepository` through a few
 tests. First, it saves a handful of `Customer` objects, demonstrating the `save()` method and setting
 up some data to work with. Next, it calls `findAll()` to fetch all `Customer` objects from the database.
