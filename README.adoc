@@ -153,3 +153,6 @@ Customer[id=51df1b0a3004cb49c50210f9, firstName='Bob', lastName='Smith']
 Congratulations! You set up a MongoDB server and wrote a simple application that uses Spring Data MongoDB to save objects to and fetch them from a database -- all without writing a concrete repository implementation.
 
 NOTE: If you're interesting in exposing MongoDB repositories with a hypermedia-based RESTful front end with little effort, you might want to read link:/guides/gs/accessing-mongodb-data-rest[Accessing MongoDB Data with REST].
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
+
