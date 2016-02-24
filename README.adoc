@@ -133,6 +133,8 @@ up some data to work with. Next, it calls `findAll()` to fetch all `Customer` ob
 Then it calls `findByFirstName()` to fetch a single `Customer` by her first name. Finally, it calls
 `findByLastName()` to find all customers whose last name is "Smith".
 
+NOTE: Spring Boot by default attempts to connect to a locally hosted instance of MongoDB. Read the http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-mongodb[reference docs] for details on pointing your app to an instance of MongoDB hosted elsewhere.
+
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_mainhead.adoc[]
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
     
