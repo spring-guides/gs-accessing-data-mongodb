@@ -69,7 +69,7 @@ NOTE: In this guide, the typical getters and setters have been left out for brev
 
 `id` fits the standard name for a MongoDB id so it doesn't require any special annotation to tag it for Spring Data MongoDB.
 
-The other two properties, `firstName` and `lastName`, are left unannotated. It is assumed that they'll be mapped to columns that share the same name as the properties themselves.
+The other two properties, `firstName` and `lastName`, are left unannotated. It is assumed that they'll be mapped to fields that share the same name as the properties themselves.
 
 
 The convenient `toString()` method will print out the details about a customer.
