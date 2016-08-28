@@ -114,7 +114,7 @@ Spring Boot will handle those repositories automatically as long as they are inc
 in the same package (or a sub-package) of your `@SpringBootApplication` class. For more control over the
 registration process, you can use the `@EnableMongoRepositories` annotation.
 
-NOTE: By default, `@EnableMongoRepositories` will scan the current package for any interfaces that extend one of Spring Data's repository interfaces. Use it's `basePackageClasses=MyRepository.class` to safely tell Spring Data GemFire to scan a different root package by type if your project layout has multiple projects and its not finding your repositories.
+NOTE: By default, `@EnableMongoRepositories` will scan the current package for any interfaces that extend one of Spring Data's repository interfaces. Use it's `basePackageClasses=MyRepository.class` to safely tell Spring Data MongoDB to scan a different root package by type if your project layout has multiple projects and its not finding your repositories.
 
 Spring Data MongoDB uses the `MongoTemplate` to execute the queries behind your `find*` methods. You can
 use the template yourself for more complex queries, but this guide doesn't cover that.
