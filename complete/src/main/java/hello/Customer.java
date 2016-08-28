@@ -6,10 +6,10 @@ import org.springframework.data.annotation.Id;
 public class Customer {
 
     @Id
-    private String id;
+    public String id;
 
-    private String firstName;
-    private String lastName;
+    public String firstName;
+    public String lastName;
 
     public Customer() {}
 

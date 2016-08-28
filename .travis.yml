@@ -2,6 +2,8 @@ sudo: false
 language: java
 jdk:
 - oraclejdk8
+services:
+- mongodb
 script:
 - test/run.sh
 notifications:
