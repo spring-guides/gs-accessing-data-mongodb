@@ -35,24 +35,24 @@ With your project set up, you can install and launch the MongoDB database.
 If you are using a Mac with homebrew, this is as simple as:
 
     $ brew install mongodb
-    
+
 With MacPorts:
 
     $ port install mongodb
-    
+
 For other systems with package management, such as Redhat, Ubuntu, Debian, CentOS, and Windows, see instructions at http://docs.mongodb.org/manual/installation/.
 
-After you install MongoDB, launch it in a console window. This command also starts up a server process. 
+After you install MongoDB, launch it in a console window. This command also starts up a server process.
 
 
     $ mongod
-    
+
 You probably won't see much more than this:
 
 ....
 all output going to: /usr/local/var/log/mongodb/mongo.log
 ....
-    
+
 == Define a simple entity
 MongoDB is a NoSQL document store. In this example, you store `Customer` objects.
 
@@ -88,7 +88,7 @@ To see how this works, create a repository interface that queries `Customer` doc
 ----
 include::complete/src/main/java/hello/CustomerRepository.java[]
 ----
-    
+
 `CustomerRepository` extends the `MongoRepository` interface and plugs in the type of values and id it works with: `Customer` and `String`. Out-of-the-box, this interface comes with many operations, including standard CRUD operations (create-read-update-delete).
 
 You can define other queries as needed by simply declaring their method signature. In this case, you add `findByFirstName`, which essentially seeks documents of type `Customer` and finds the one that matches on `firstName`.
@@ -130,8 +130,8 @@ NOTE: Spring Boot by default attempts to connect to a locally hosted instance of
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_mainhead.adoc[]
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
-    
-    
+
+
 As our `Application` implements `CommandLineRunner`, the `run` method is invoked automatically when boot
 starts. You should see something like this (with other stuff like queries as well):
 ....
@@ -151,5 +151,13 @@ Congratulations! You set up a MongoDB server and wrote a simple application that
 
 NOTE: If you're interesting in exposing MongoDB repositories with a hypermedia-based RESTful front end with little effort, you might want to read link:/guides/gs/accessing-mongodb-data-rest[Accessing MongoDB Data with REST].
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
+== See Also
 
+The following guides may also be helpful:
+
+* https://spring.io/guides/gs/accessing-data-jpa/[Accessing Data with JPA]
+* https://spring.io/guides/gs/accessing-data-gemfire/[Accessing Data with Gemfire]
+* https://spring.io/guides/gs/accessing-data-mysql/[Accessing data with MySQL]
+* https://spring.io/guides/gs/accessing-data-neo4j/[Accessing Data with Neo4j]
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
