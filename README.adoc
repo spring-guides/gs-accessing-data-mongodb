@@ -2,7 +2,7 @@
 :icons: font
 :source-highlighter: prettify
 :project_id: gs-accessing-data-mongodb
-This guide walks you through the process of using http://projects.spring.io/spring-data-mongodb/[Spring Data MongoDB] to build an application that stores data in and retrieves it from http://www.mongodb.org/[MongoDB], a document-based database.
+This guide walks you through the process of using https://projects.spring.io/spring-data-mongodb/[Spring Data MongoDB] to build an application that stores data in and retrieves it from https://www.mongodb.org/[MongoDB], a document-based database.
 
 
 == What you'll build
@@ -36,7 +36,7 @@ With MacPorts:
 
     $ port install mongodb
 
-For other systems with package management, such as Redhat, Ubuntu, Debian, CentOS, and Windows, see instructions at http://docs.mongodb.org/manual/installation/.
+For other systems with package management, such as Redhat, Ubuntu, Debian, CentOS, and Windows, see instructions at https://docs.mongodb.org/manual/installation/.
 
 After you install MongoDB, launch it in a console window. This command also starts up a server process.
 
@@ -70,7 +70,7 @@ The other two properties, `firstName` and `lastName`, are left unannotated. It i
 
 The convenient `toString()` method will print out the details about a customer.
 
-NOTE: MongoDB stores data in collections. Spring Data MongoDB will map the class `Customer` into a collection called _customer_. If you want to change the name of the collection, you can use Spring Data MongoDB's http://docs.spring.io/spring-data/data-mongodb/docs/current/api/org/springframework/data/mongodb/core/mapping/Document.html[`@Document`] annotation on the class.
+NOTE: MongoDB stores data in collections. Spring Data MongoDB will map the class `Customer` into a collection called _customer_. If you want to change the name of the collection, you can use Spring Data MongoDB's https://docs.spring.io/spring-data/data-mongodb/docs/current/api/org/springframework/data/mongodb/core/mapping/Document.html[`@Document`] annotation on the class.
 
 
 == Create simple queries
@@ -122,7 +122,7 @@ up some data to work with. Next, it calls `findAll()` to fetch all `Customer` ob
 Then it calls `findByFirstName()` to fetch a single `Customer` by her first name. Finally, it calls
 `findByLastName()` to find all customers whose last name is "Smith".
 
-NOTE: Spring Boot by default attempts to connect to a locally hosted instance of MongoDB. Read the http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-mongodb[reference docs] for details on pointing your app to an instance of MongoDB hosted elsewhere.
+NOTE: Spring Boot by default attempts to connect to a locally hosted instance of MongoDB. Read the https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-mongodb[reference docs] for details on pointing your app to an instance of MongoDB hosted elsewhere.
 
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_mainhead.adoc[]
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
