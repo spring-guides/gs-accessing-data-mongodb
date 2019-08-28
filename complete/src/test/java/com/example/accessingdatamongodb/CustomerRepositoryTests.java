@@ -1,4 +1,4 @@
-package hello;
+package com.example.accessingdatamongodb;
 /*
  * Copyright 2016 the original author or authors.
  *
@@ -27,6 +27,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Example;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import com.example.accessingdatamongodb.Customer;
+import com.example.accessingdatamongodb.CustomerRepository;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
