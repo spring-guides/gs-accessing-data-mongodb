@@ -1,4 +1,4 @@
-package hello;
+package com.example.accessingdatamongodb;
 
 import java.util.List;
 
