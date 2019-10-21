@@ -19,29 +19,26 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Example;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import com.example.accessingdatamongodb.Customer;
 import com.example.accessingdatamongodb.CustomerRepository;
 
-@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class CustomerRepositoryTests {
 
 	@Autowired
-	static CustomerRepository repository;
+	CustomerRepository repository;
 
-	static Customer dave, oliver, carter;
+	Customer dave, oliver, carter;
 
-	@BeforeAll
-	public static void setUp() {
+	@BeforeEach
+	public void setUp() {
 
 		repository.deleteAll();
 
@@ -51,7 +48,7 @@ public class CustomerRepositoryTests {
 	}
 
 	@Test
-	public static void setsIdOnSave() {
+	public void setsIdOnSave() {
 
 		Customer dave = repository.save(new Customer("Dave", "Matthews"));
 
@@ -59,7 +56,7 @@ public class CustomerRepositoryTests {
 	}
 
 	@Test
-	public static void findsByLastName() {
+	public void findsByLastName() {
 
 		List<Customer> result = repository.findByLastName("Beauford");
 
@@ -67,7 +64,7 @@ public class CustomerRepositoryTests {
 	}
 
 	@Test
-	public static void findsByExample() {
+	public void findsByExample() {
 
 		Customer probe = new Customer(null, "Matthews");
 
