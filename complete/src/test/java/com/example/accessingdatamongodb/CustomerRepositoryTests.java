@@ -6,7 +6,7 @@ package com.example.accessingdatamongodb;
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *	  http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -35,44 +35,44 @@ import com.example.accessingdatamongodb.CustomerRepository;
 @SpringBootTest
 public class CustomerRepositoryTests {
 
-    @Autowired
-    CustomerRepository repository;
+	@Autowired
+	CustomerRepository repository;
 
-    Customer dave, oliver, carter;
+	Customer dave, oliver, carter;
 
-    @Before
-    public void setUp() {
+	@Before
+	public void setUp() {
 
-        repository.deleteAll();
+		repository.deleteAll();
 
-        dave = repository.save(new Customer("Dave", "Matthews"));
-        oliver = repository.save(new Customer("Oliver August", "Matthews"));
-        carter = repository.save(new Customer("Carter", "Beauford"));
-    }
+		dave = repository.save(new Customer("Dave", "Matthews"));
+		oliver = repository.save(new Customer("Oliver August", "Matthews"));
+		carter = repository.save(new Customer("Carter", "Beauford"));
+	}
 
-    @Test
-    public void setsIdOnSave() {
+	@Test
+	public void setsIdOnSave() {
 
-        Customer dave = repository.save(new Customer("Dave", "Matthews"));
+		Customer dave = repository.save(new Customer("Dave", "Matthews"));
 
-        assertThat(dave.id).isNotNull();
-    }
+		assertThat(dave.id).isNotNull();
+	}
 
-    @Test
-    public void findsByLastName() {
+	@Test
+	public void findsByLastName() {
 
-        List<Customer> result = repository.findByLastName("Beauford");
+		List<Customer> result = repository.findByLastName("Beauford");
 
-        assertThat(result).hasSize(1).extracting("firstName").contains("Carter");
-    }
+		assertThat(result).hasSize(1).extracting("firstName").contains("Carter");
+	}
 
-    @Test
-    public void findsByExample() {
+	@Test
+	public void findsByExample() {
 
-        Customer probe = new Customer(null, "Matthews");
+		Customer probe = new Customer(null, "Matthews");
 
-        List<Customer> result = repository.findAll(Example.of(probe));
+		List<Customer> result = repository.findAll(Example.of(probe));
 
-        assertThat(result).hasSize(2).extracting("firstName").contains("Dave", "Oliver August");
-    }
+		assertThat(result).hasSize(2).extracting("firstName").contains("Dave", "Oliver August");
+	}
 }

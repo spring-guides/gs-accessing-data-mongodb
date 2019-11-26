@@ -108,7 +108,7 @@ following listing shows the Customer class (in
 `src/main/java/com/example/accessingdatamongodb/Customer.java`):
 
 ====
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/main/java/com/example/accessingdatamongodb/Customer.java[]
 ----
@@ -148,7 +148,7 @@ the following listing (in
   `src/main/java/com/example/accessingdatamongodb/CustomerRepository.java`) shows:
 
 ====
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/main/java/com/example/accessingdatamongodb/CustomerRepository.java[]
 ----
@@ -179,7 +179,7 @@ the class that Initializr created for this example (in
 `src/main/java/com/example/accessingdatamongodb/AccessingDataMongodbApplication.java`):
 
 ====
-[source,java]
+[source,java,tabsize=2]
 ----
 include::initial/src/main/java/com/example/accessingdatamongodb/AccessingDataMongodbApplication.java[]
 ----
@@ -210,7 +210,7 @@ set up some data and use it to generate output. The following listing shows the 
 `src/main/java/com/example/accessingdatamongodb/AccessingDataMongodbApplication.java`):
 
 ====
-[source,java]
+[source,java,tabsize=2]
 ----
 include::complete/src/main/java/com/example/accessingdatamongodb/AccessingDataMongodbApplication.java[]
 ----
