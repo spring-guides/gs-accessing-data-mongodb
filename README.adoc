@@ -266,7 +266,7 @@ link:/guides/gs/accessing-mongodb-data-rest[Accessing MongoDB Data with REST].
 
 The following guides may also be helpful:
 
-* https://spring.io/gs/accessing-mongodb-data-rest[Accessing MongoDB Data with REST]
+* https://spring.io/guides/gs/accessing-mongodb-data-rest[Accessing MongoDB Data with REST]
 * https://spring.io/guides/gs/accessing-data-jpa/[Accessing Data with JPA]
 * https://spring.io/guides/gs/accessing-data-gemfire/[Accessing Data with Gemfire]
 * https://spring.io/guides/gs/accessing-data-mysql/[Accessing data with MySQL]
