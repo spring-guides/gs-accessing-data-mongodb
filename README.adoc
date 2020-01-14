@@ -11,7 +11,7 @@ document-based database.
 
 == What You Will build
 
-You will store `Customer` POJOs (Plain Old Java Objecgs) in a MongoDB database by using
+You will store `Customer` POJOs (Plain Old Java Objects) in a MongoDB database by using
 Spring Data MongoDB.
 
 == What You Need
