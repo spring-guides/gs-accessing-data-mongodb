@@ -24,7 +24,7 @@ include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/
 [[scratch]]
 == Starting with Spring Initializr
 
-If you use Maven, visit the https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.4.3.RELEASE&packaging=jar&jvmVersion=11&groupId=com.example&artifactId=accessing-data-mongodb&name=accessing-data-mongodb&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.accessing-data-mongodb&dependencies=data-mongodb[Spring Initializr] to generate a new project with the required dependency (Spring Data MongoDB).
+If you use Maven, visit the https://start.spring.io/#!type=maven-project&language=java&platformVersion=2.4.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=accessing-data-mongodb&name=accessing-data-mongodb&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.accessing-data-mongodb&dependencies=data-mongodb[Spring Initializr] to generate a new project with the required dependency (Spring Data MongoDB).
 
 The following listing shows the `pom.xml` file created when you choose Maven:
 
@@ -35,7 +35,7 @@ include::complete/pom.xml[]
 ----
 ====
 
-If you use Maven, visit the https://start.spring.io/#!type=gradle-project&language=java&platformVersion=2.4.3.RELEASE&packaging=jar&jvmVersion=11&groupId=com.example&artifactId=accessing-data-mongodb&name=accessing-data-mongodb&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.accessing-data-mongodb&dependencies=data-mongodb[Spring Initializr] to generate a new project with the required dependency (Spring Data MongoDB).
+If you use Maven, visit the https://start.spring.io/#!type=gradle-project&language=java&platformVersion=2.4.3.RELEASE&packaging=jar&jvmVersion=1.8&groupId=com.example&artifactId=accessing-data-mongodb&name=accessing-data-mongodb&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.accessing-data-mongodb&dependencies=data-mongodb[Spring Initializr] to generate a new project with the required dependency (Spring Data MongoDB).
 
 The following listing shows the `build.gradle` file created when you choose Gradle:
 
