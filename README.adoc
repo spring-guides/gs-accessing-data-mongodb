@@ -17,9 +17,9 @@ Spring Data MongoDB.
 == What You Need
 
 :java_version: 1.8
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/prereq_editor_jdk_buildtools.adoc[]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/how_to_complete_this_guide.adoc[]
 
 [[scratch]]
 == Starting with Spring Initializr
@@ -191,7 +191,7 @@ include::initial/src/main/java/com/example/accessingdatamongodb/AccessingDataMon
 ----
 ====
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/spring-boot-application-new-path.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/spring-boot-application-new-path.adoc[]
 
 Spring Boot automatically handles those repositories as long as they are included
 in the same package (or a sub-package) of your `@SpringBootApplication` class. For more
@@ -235,8 +235,8 @@ MongoDB. Read the
 https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-mongodb[reference docs]
 for details on pointing your application to an instance of MongoDB hosted elsewhere.
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_mainhead.adoc[]
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/build_an_executable_jar_with_both.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/build_an_executable_jar_mainhead.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/build_an_executable_jar_with_both.adoc[]
 
 
 As `AccessingDataMongodbApplication` implements `CommandLineRunner`, the `run` method is
@@ -278,4 +278,4 @@ The following guides may also be helpful:
 * https://spring.io/guides/gs/accessing-data-mysql/[Accessing data with MySQL]
 * https://spring.io/guides/gs/accessing-data-neo4j/[Accessing Data with Neo4j]
 
-include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/main/footer.adoc[]
