@@ -14,12 +14,17 @@ pipeline {
 		stage("test: baseline (jdk8)") {
 			agent {
 				docker {
-					image 'adoptopenjdk/openjdk8:latest'
+					image 'springci/spring-data-openjdk8-with-mongodb-4.0.23:latest'
 					args '-v $HOME/.m2:/tmp/jenkins-home/.m2'
 				}
 			}
 			options { timeout(time: 30, unit: 'MINUTES') }
 			steps {
+				sh 'mkdir -p /tmp/mongodb/db /tmp/mongodb/log'
+				sh 'mongod --setParameter transactionLifetimeLimitSeconds=90 --setParameter maxTransactionLockRequestTimeoutMillis=10000 --dbpath /tmp/mongodb/db --replSet rs0 --fork --logpath /tmp/mongodb/log/mongod.log &'
+				sh 'sleep 10'
+				sh 'mongo --eval "rs.initiate({_id: \'rs0\', members:[{_id: 0, host: \'127.0.0.1:27017\'}]});"'
+				sh 'sleep 15'
 				sh 'test/run.sh'
 			}
 		}
