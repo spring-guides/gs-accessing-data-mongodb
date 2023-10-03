@@ -24,13 +24,20 @@ import org.junit.jupiter.api.Test;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.data.domain.Example;
 
-import com.example.accessingdatamongodb.Customer;
-import com.example.accessingdatamongodb.CustomerRepository;
+import org.testcontainers.containers.MongoDBContainer;
+import org.testcontainers.junit.jupiter.Container;
+import org.testcontainers.junit.jupiter.Testcontainers;
 
 @SpringBootTest
+@Testcontainers
 public class CustomerRepositoryTests {
+
+	@Container
+	@ServiceConnection
+	static MongoDBContainer container = new MongoDBContainer("mongo:7.0.2");
 
 	@Autowired
 	CustomerRepository repository;
