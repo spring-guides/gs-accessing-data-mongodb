@@ -44,34 +44,26 @@ NOTE: You can also fork the project from Github and open it in your IDE or other
 With your project set up, you can install and launch the MongoDB database.
 
 
-If you use a Mac with Homebrew, you can run the following command:
+If you use a Mac with Homebrew, you can run the following commands:
 
 ====
 [src,bash]
 ----
-$ brew install mongodb
-----
-====
-
-With MacPorts, you can run the following command:
-
-====
-[src,bash]
-----
-$ port install mongodb
+$ brew tap mongodb/brew
+$ brew install mongodb-community
 ----
 ====
 
 For other systems with package management, such as Redhat, Ubuntu, Debian, CentOS, and
 Windows, see the instructions at https://docs.mongodb.org/manual/installation/.
 
-After you install MongoDB, you can launch it in a console window by running the following
-command (which also starts up a server process):
+After you install MongoDB, you can start it by running the following
+command:
 
 ====
 [src,bash]
 ----
-$ mongod
+$ brew services start mongodb-community
 ----
 ====
 
@@ -80,7 +72,7 @@ You should see output similar to the following:
 ====
 [src,bash]
 ----
-all output going to: /usr/local/var/log/mongodb/mongo.log
+==> Successfully started `mongodb-community` (label: homebrew.mxcl.mongodb-community)
 ----
 ====
 
