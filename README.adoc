@@ -98,14 +98,15 @@ include::complete/src/main/java/com/example/accessingdatamongodb/Customer.java[]
 ====
 
 Here you have a `Customer` class with three attributes: `id`, `firstName`, and `lastName`.
-The `id` is mostly for internal use by MongoDB. You also have a single constructor to
-populate the entities when creating a new instance.
+The `id` is mostly for internal use by MongoDB. You also have two constructors: the default
+constructor exists only for the sake of Spring Data MongoDB, and the other constructor is
+the one you use to create instances of `Customer` to be saved to the database.
 
 
 NOTE: In this guide, the typical getters and setters have been left out for brevity.
 
-`id` fits the standard name for a MongoDB ID, so it does not require any special
-annotation to tag it for Spring Data MongoDB.
+`id` is annotated with `@Id` so that Spring Data MongoDB can identify it as the document's
+ID field.
 
 The other two properties, `firstName` and `lastName`, are left unannotated. It is assumed
 that they are mapped to fields that share the same name as the properties themselves.
@@ -223,13 +224,16 @@ automatically invoked when Spring Boot starts. You should see something like the
 ====
 [src,bash]
 ----
-== Customers found with findAll():
+Customers found with findAll():
+-------------------------------
 Customer[id=51df1b0a3004cb49c50210f8, firstName='Alice', lastName='Smith']
 Customer[id=51df1b0a3004cb49c50210f9, firstName='Bob', lastName='Smith']
 
-== Customer found with findByFirstName('Alice'):
+Customer found with findByFirstName('Alice'):
+--------------------------------
 Customer[id=51df1b0a3004cb49c50210f8, firstName='Alice', lastName='Smith']
-== Customers found with findByLastName('Smith'):
+Customers found with findByLastName('Smith'):
+--------------------------------
 Customer[id=51df1b0a3004cb49c50210f8, firstName='Alice', lastName='Smith']
 Customer[id=51df1b0a3004cb49c50210f9, firstName='Bob', lastName='Smith']
 ----
@@ -249,7 +253,7 @@ link:/guides/gs/accessing-mongodb-data-rest[Accessing MongoDB Data with REST].
 
 The following guides may also be helpful:
 
-* https://spring.io/guides/gs/accessing-mongodb-data-rest[Accessing MongoDB Data with REST]
+* https://spring.io/guides/gs/accessing-mongodb-data-rest/[Accessing MongoDB Data with REST]
 * https://spring.io/guides/gs/accessing-data-jpa/[Accessing Data with JPA]
 * https://spring.io/guides/gs/accessing-data-gemfire/[Accessing Data with Gemfire]
 * https://spring.io/guides/gs/accessing-data-mysql/[Accessing data with MySQL]
