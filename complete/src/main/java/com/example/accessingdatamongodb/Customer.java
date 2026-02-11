@@ -1,12 +1,12 @@
 package com.example.accessingdatamongodb;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.data.annotation.Id;
-
 
 public class Customer {
 
 	@Id
-	public String id;
+	public @Nullable String id;
 
 	public String firstName;
 	public String lastName;
