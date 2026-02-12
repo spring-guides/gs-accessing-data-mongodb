@@ -23,14 +23,14 @@ include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/
 [[scratch]]
 == Starting with Spring Initializr
 
-You can use this https://start.spring.io/#!type=maven-project&groupId=com.example&artifactId=accessing-data-mongodb&name=accessing-data-mongodb&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.accessing-data-mongodb&dependencies=data-mongodb[pre-initialized project] and click Generate to download a ZIP file. This project is configured to fit the examples in this tutorial.
+You can use this https://start.spring.io/#!type=maven-project&groupId=com.example&artifactId=accessing-data-mongodb&name=accessing-data-mongodb&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.accessingdatamongodb&dependencies=data-mongodb,testcontainers[pre-initialized project] and click Generate to download a ZIP file. This project is configured to fit the examples in this tutorial.
 
 To manually initialize the project:
 
 . Navigate to https://start.spring.io.
 This service pulls in all the dependencies you need for an application and does most of the setup for you.
 . Choose either Gradle or Maven and the language you want to use. This guide assumes that you chose Java.
-. Click *Dependencies* and select *Spring Data MongoDB*.
+. Click *Dependencies* and select *Spring Data MongoDB* and *Testcontainers*.
 . Click *Generate*.
 . Download the resulting ZIP file, which is an archive of a web application that is configured with your choices.
 
@@ -41,48 +41,32 @@ NOTE: You can also fork the project from Github and open it in your IDE or other
 [[initial]]
 == Install and Launch MongoDB
 
-With your project set up, you can install and launch the MongoDB database.
+For this guide to work, you must stand up a local MongoDB server.
 
-
-If you use a Mac with Homebrew, you can run the following command:
-
-====
-[src,bash]
-----
-$ brew install mongodb
-----
-====
-
-With MacPorts, you can run the following command:
+On a Mac OS X machine with Homebrew installed, run the following commands:
 
 ====
 [src,bash]
 ----
-$ port install mongodb
+brew tap mongodb/brew
+brew install mongodb-community
 ----
 ====
 
-For other systems with package management, such as Redhat, Ubuntu, Debian, CentOS, and
-Windows, see the instructions at https://docs.mongodb.org/manual/installation/.
+You can find more installation options at https://docs.mongodb.org/manual/installation/.
 
-After you install MongoDB, you can launch it in a console window by running the following
-command (which also starts up a server process):
-
-====
-[src,bash]
-----
-$ mongod
-----
-====
-
-You should see output similar to the following:
+After installing MongoDB, you need to launch the service. On a Mac, you can use
+the following command:
 
 ====
 [src,bash]
 ----
-all output going to: /usr/local/var/log/mongodb/mongo.log
+$ brew services start mongodb-community
 ----
 ====
+
+You can start the MongoDB client from another terminal window by running the `mongosh`
+command.
 
 == Define a Simple Entity
 
